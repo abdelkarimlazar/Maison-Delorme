@@ -16,6 +16,7 @@ print("Avant nettoyage :", b.shape, v.shape)
 b = b.drop_duplicates()
 v = v.drop_duplicates()
 
+
 #CA = -1
 ids_ca_inconnu = b.loc[b["ca_mensuel_eur"] <= 0, "boutique_id"].tolist()
 print("Boutiques sans CA fiable :", ids_ca_inconnu)
@@ -34,9 +35,9 @@ print(b.isna().sum())
 print("\n=== VENTES : valeurs manquantes ===")
 print(v.isna().sum())
 
-print("\nAprès nettoyage :", b.shape, v.shape)
+print("\nApres nettoyage :", b.shape, v.shape)
 
 #sauvegarde
 b.to_csv(CLEAN / "boutiques_propres.csv", index=False)
 v.to_csv(CLEAN / "ventes_propres.csv", index=False)
-print("Fichiers propres enregistrés dans", CLEAN)
+print("Fichiers propres enregistres dans", CLEAN)
