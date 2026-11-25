@@ -1,0 +1,10 @@
+Seuil de CA : 16720.0 euros
+Nombre de boutiques : 56
+Accuracy : 0.857
+Precision : 0.889
+Recall : 0.828
+F1-score : 0.857
+Accuracy modèle de référence : 0.518
+Matrice de confusion :
+[[24  3]
+ [ 5 24]]
