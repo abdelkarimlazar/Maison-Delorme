@@ -1,0 +1,15 @@
+Q3-Q4 : Régression linéaire (Validation croisée 5-fold)
+Nombre de boutiques : 56
+R2 (CV) : 0.793
+MAE (CV) : 2214 EUR
+RMSE (CV) : 2740 EUR
+MAPE (CV) : 13.8 %
+
+Coefficients (modèle ajusté sur les 56 boutiques) :
+  Intercept : 8243.16 EUR
+  surface_m2 : +79.68 EUR/unité (std: +1818 EUR)
+  passage_pietons_jour : +1.21 EUR/unité (std: +4712 EUR)
+  concurrents_300m : -1336.61 EUR/unité (std: -2098 EUR)
+
+Local proposé (95 m2, 4200 passages/j, 2 concurrents) : 18216 EUR
+Fourchette (± MAE) : [16003 ; 20430] EUR
