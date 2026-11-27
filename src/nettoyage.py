@@ -13,8 +13,8 @@ print("Avant nettoyage :", b.shape, v.shape)
 
 #doublons 
 
-b = b.drop_duplicates()
-v = v.drop_duplicates()
+b = b.drop_duplicates(subset=["boutique_id"], keep="first")
+v = v.drop_duplicates(subset=["boutique_id", "mois"], keep="first")
 
 
 #CA = -1
@@ -22,11 +22,15 @@ ids_ca_inconnu = b.loc[b["ca_mensuel_eur"] <= 0, "boutique_id"].tolist()
 print("Boutiques sans CA fiable :", ids_ca_inconnu)
 b.loc[b["ca_mensuel_eur"] <= 0, "ca_mensuel_eur"] = np.nan
 
-masque = v["boutique_id"].isin(ids_ca_inconnu)
+masque = (
+    v["boutique_id"].isin(ids_ca_inconnu)
+    | (v["ca_mensuel_eur"] <= 0)
+    | (v["tickets"] <= 0)
+)
 v.loc[masque, ["ca_mensuel_eur", "tickets"]] = np.nan
 
-#surface = 0 m² 
-b.loc[b["surface_m2"] == 0, "surface_m2"] = np.nan
+#surface <= 0 m² 
+b.loc[b["surface_m2"] <= 0, "surface_m2"] = np.nan
 
 #verifications
 print("\n=== BOUTIQUES : valeurs manquantes ===")
